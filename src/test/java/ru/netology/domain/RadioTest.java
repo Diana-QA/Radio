@@ -9,34 +9,36 @@ class RadioTest {
 
     @Test
     public void shouldCurrentRadioStation() {
-        Radio radioStation = new Radio(9, 4, 60);
+        Radio radioStation = new Radio(9, 0, 4, 100, 0, 60);
         assertEquals(4, radioStation.getCurrentRadioStation());
     }
 
     @Test
     public void shouldNextRadioStation() {
-        Radio radioStation = new Radio(9, 9, 60);
+        Radio radioStation = new Radio();
+        radioStation.setCurrentRadioStation(9);
         radioStation.nextCurrentRadioStation();
         assertEquals(0, radioStation.getCurrentRadioStation());
     }
 
     @Test
     public void shouldPrevRadioStation() {
-        Radio radioStation = new Radio(9, 0, 60);
+        Radio radioStation = new Radio();
+        radioStation.setCurrentRadioStation(0);
         radioStation.prevCurrentRadioStation();
         assertEquals(9, radioStation.getCurrentRadioStation());
     }
 
     @Test
     public void shouldNextCurrentRadioStation() {
-        Radio radioStation = new Radio(9, 4, 60);
+        Radio radioStation = new Radio(9, 0, 4, 100, 0, 60);
         radioStation.nextCurrentRadioStation();
         assertEquals(5, radioStation.getCurrentRadioStation());
     }
 
     @Test
     public void shouldPrevCurrentRadioStation() {
-        Radio radioStation = new Radio(9, 4, 60);
+        Radio radioStation = new Radio(9, 0, 4, 100, 0, 60);
         radioStation.prevCurrentRadioStation();
         assertEquals(3, radioStation.getCurrentRadioStation());
     }
@@ -49,8 +51,15 @@ class RadioTest {
     }
 
     @Test
+    public void shouldCurrentRadioStationMax() {
+        Radio radioStation = new Radio();
+        radioStation.setCurrentRadioStation(10);
+        assertEquals(9, radioStation.getMaxRadioStation());
+    }
+
+    @Test
     public void shouldPlusCurrentVolume() {
-        Radio volume = new Radio(9, 4, 60);
+        Radio volume = new Radio(9, 0, 4, 100, 0, 60);
         volume.plusCurrentVolume();
         assertEquals(61, volume.getCurrentVolume());
     }
@@ -64,14 +73,15 @@ class RadioTest {
 
     @Test
     public void shouldCurrentVolumeMax() {
-        Radio volume = new Radio(9, 4, 100);
+        Radio volume = new Radio();
+        volume.setCurrentVolume(101);
         volume.plusCurrentVolume();
         assertEquals(100, volume.getCurrentVolume());
     }
 
     @Test
     public void shouldCurrentVolumeMin() {
-        Radio volume = new Radio(9, 4, 0);
+        Radio volume = new Radio();
         volume.setCurrentVolume(0);
         volume.minusCurrentVolume();
         assertEquals(0, volume.getCurrentVolume());
@@ -79,8 +89,7 @@ class RadioTest {
 
     @Test
     public void shouldSetCurrentVolume() {
-        Radio volume = new Radio(9, 4, 60);
-        volume.setCurrentVolume(60);
+        Radio volume = new Radio(9, 0, 4, 100, 0, 60);
         assertEquals(60, volume.getCurrentVolume());
     }
 
