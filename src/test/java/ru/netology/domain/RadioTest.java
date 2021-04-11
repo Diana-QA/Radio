@@ -66,9 +66,9 @@ class RadioTest {
 
     @Test
     public void shouldMinusCurrentVolume() {
-        Radio volume = new Radio(9, 0, 4, 100, 0, 60);
+        Radio volume = new Radio(9, 4, 50);
         volume.minusCurrentVolume();
-        assertEquals(59, volume.getCurrentVolume());
+        assertEquals(49, volume.getCurrentVolume());
     }
 
     @Test
