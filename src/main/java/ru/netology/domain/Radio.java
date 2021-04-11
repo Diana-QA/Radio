@@ -4,10 +4,20 @@ public class Radio {
     private int maxRadioStation = 9;
     private int minRadioStation = 0;
     private int currentRadioStation;
-    private int maxVolume = 10;
+    private int maxVolume = 100;
     private int minVolume = 0;
     private int currentVolume;
     private boolean on;
+
+
+    public Radio() {
+    }
+
+    public Radio(int maxRadioStation, int currentRadioStation, int currentVolume) {
+        this.maxRadioStation = maxRadioStation;
+        this.currentRadioStation = currentRadioStation;
+        this.currentVolume = currentVolume;
+    }
 
     public int getMaxRadioStation() {
         return maxRadioStation;
@@ -23,20 +33,6 @@ public class Radio {
 
     public void setMinRadioStation(int minRadioStation) {
         this.minRadioStation = minRadioStation;
-    }
-
-    public int getCurrentRadioStation() {
-        return currentRadioStation;
-    }
-
-    public void setCurrentRadioStation(int currentRadioStation) {
-        if (currentRadioStation > maxRadioStation) {
-            return;
-        }
-        if (currentRadioStation < minRadioStation) {
-            return;
-        }
-        this.currentRadioStation = currentRadioStation;
     }
 
     public int getMaxVolume() {
@@ -55,8 +51,23 @@ public class Radio {
         this.minVolume = minVolume;
     }
 
+    public int getCurrentRadioStation() {
+        return currentRadioStation;
+    }
+
     public int getCurrentVolume() {
         return currentVolume;
+    }
+
+    public void setCurrentRadioStation(int currentRadioStation) {
+        if (currentRadioStation > maxRadioStation) {
+            return;
+        }
+        if (currentRadioStation < minRadioStation) {
+            return;
+        }
+        this.currentRadioStation = currentRadioStation;
+
     }
 
     public void setCurrentVolume(int currentVolume) {
@@ -69,14 +80,6 @@ public class Radio {
             return;
         }
         this.currentVolume = currentVolume;
-    }
-
-    public boolean isOn() {
-        return on;
-    }
-
-    public void setOn(boolean on) {
-        this.on = on;
     }
 
     public void nextCurrentRadioStation() {
